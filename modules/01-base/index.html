@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01. Base | PHP Masterclass</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="lesson-active">
+    <header class="master-header">
+        <div class="nav-container">
+            <a href="../../index.html" class="brand" style="text-decoration: none; color: inherit;">
+                <span class="logo-chip">PHP</span>
+                <span class="brand-name">Masterclass <span>by Choke</span></span>
+            </a>
+            <nav class="main-nav">
+                <a href="../../index.html">Blog</a>
+                <a href="../../index.html#temario">Cursos</a>
+                <a href="../../index.html">Libros</a>
+                <a href="https://github.com/bychoke" target="_blank" class="btn-nav">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="viewer-container">
+        <main class="main-article">
+            <section class="lesson-header">
+                <span class="mod-num">MÓDULO 01</span>
+                <h1>Base</h1>
+            </section>
+
+            <article class="lesson-content-body">
+                <p>Un lenguaje tan antiguo como el propio internet. El primero que consiguió que las páginas pasaran de ser estáticas a dinámicas. Pero no caigáis en el error, no esta ni obsoleto ni viejo: ¡esta más vivo que nunca!. Ha sabido adaptarse a los nuevos tiempos: orientación a objetos, bibliotecas, gestión de imágenes, etc. Actualmente es tan estable que es utilizado por grandes sitios como Wikipedia y Facebook. Además que grandes CMS, como WordPress, están escritos en este lenguaje.</p>
+                
+                <p>Os ofrezco un curso gratuito de PHP (versión 8.x). Aprenderás las técnicas más modernas para el desarrollo del backend y las bases para cualquier persona que quiera crear páginas dinámicas. Si tienes alguna durante las lecciones, o crees necesario ampliar alguna sección, no dudes en dejar un comentario en el final de la página.</p>
+
+                <h2>Creación de ficheros</h2>
+                <p>PHP se ejecuta en un fichero plano. Para ello debes crear un documento con la extensión .php y dentro tu HTML.</p>
+                <div class="code-block">
+                    <pre><code>&lt;html&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Mi primer fichero en PHP&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <p>Por ahora no tienes razones para asustarte. Es prácticamente igual a hacer una página estática en HTML, salvo que hemos cambiado la extensión.</p>
+                <p>Para añadir tus scripts de PHP debes usar <code>&lt;?php ?&gt;</code>. También existen los short tags <code>&lt;? ?&gt;</code>, pero están desaconsejados y no deberías usarlos, ya que pueden estar deshabilitados en el servidor y causar problemas de compatibilidad.</p>
+                <div class="code-block">
+                    <pre><code>&lt;html&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Mi primer fichero en PHP&lt;/h1&gt;
+        &lt;?php echo 'Y funciona perfecto!'; ?&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <p>Toda sentencia, la instrucción, debe terminar con un <code>;</code>. Independientemente de donde se abra o se cierre el script. Eres libre de añadir tabulaciones y saltos de línea para dejarlo más ordenado.</p>
+                <div class="code-block">
+                    <pre><code>&lt;html&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Mi primer fichero en PHP&lt;/h1&gt;
+        &lt;?php
+            echo 'Y funciona perfecto!';
+        ?&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <p>Existe un atajo de <code>&lt;?php echo 'Hola Mundo'; ?&gt;</code> muy sencillo: <code>&lt;?= 'Hola Mundo' ?&gt;</code>. Durante el curso será utilizado muy poco.</p>
+
+                <h2>Levantar un servidor PHP rápidamente</h2>
+                <p>Si intentas abrir el archivo comprobarás que no ha pasado nada. Necesitamos procesar el archivo PHP para que se muestre el HTML final. La misión de PHP es generar HTML, el navegador no entiende PHP. Todo archivo de PHP debe ejecutarse con un software.</p>
+                <p>En el caso de tener instalado PHP en tu sistema operativo, y saber trabajar con el terminal, rápidamente puedes ejecutar el servidor interno que incorpora.</p>
+                <div class="code-block">
+                    <pre><code>php -S localhost:8000</code></pre>
+                </div>
+                <p>Y abrir, en tu navegador favorito, localhost:8000. En caso de no ser tan geek, te recomiendo la forma que usa el 99,9% de la gente. Instalar una software.</p>
+                <ul>
+                    <li>En Windows: <strong>XAMPP</strong>.</li>
+                    <li>En Mac OS: <strong>MAMP</strong>.</li>
+                    <li>En Linux: <strong>Nginx + PHP</strong> o XAMPP.</li>
+                </ul>
+                <p>Después de instalarlo aparecerá una carpeta con el nombre <code>htdocs</code> donde colocarás tus activos PHP. Si tienes dudas del proceso, puedes buscar más información en Google. En el curso me voy a centrar en temas relacionado con el lenguaje, no de software.</p>
+
+                <h2>Imprimir</h2>
+                <p>La palabra reservada <code>echo</code> sirve para imprimir por pantalla. Eso significa que cualquier texto que pongamos a continuación de echo aparecerá en el lugar donde se ha declarado el script.</p>
+                <div class="code-block">
+                    <pre><code>&lt;html&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Mi primer fichero en PHP&lt;/h1&gt;
+        &lt;?php
+            echo '&lt;p&gt;Y funciona perfecto!&lt;/p&gt;';
+        ?&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <p>Terminará siendo.</p>
+                <div class="code-block">
+                    <pre><code>&lt;html&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Mi primer fichero en PHP&lt;/h1&gt;
+            &lt;p&gt;Y funciona perfecto!&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <p>Si deseas realizar varias líneas tienes varias opciones. La más sencilla es utilizando varios echo.</p>
+                <div class="code-block">
+                    <pre><code>&lt;html&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Mi primer fichero en PHP&lt;/h1&gt;
+        &lt;?php
+            echo '&lt;p&gt;En un lugar de la mancha,&lt;/p&gt;';
+            echo '&lt;p&gt;de cuyo nombre no quiero acordarme...&lt;/p&gt;';
+        ?&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <p>Otra es añadiendo un salto de línea representado como <code>PHP_EOL</code>.</p>
+                <div class="code-block">
+                    <pre><code>&lt;html&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Mi primer fichero en PHP&lt;/h1&gt;
+        &lt;?php
+            echo '&lt;p&gt;En un lugar de la mancha,&lt;/p&gt;' . PHP_EOL . '&lt;p&gt;de cuyo nombre no quiero acordarme...&lt;/p&gt;';
+        ?&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <p>En la red verás miles de ejemplos donde se usa <code>\n</code> para realizar saltos de línea. Si lo utilizas podrías encontrarte problemas de compatibilidad entre sistemas operativos ya que la forma de realizar un salto de línea varía en cada uno. <code>PHP_EOL</code> te hace la vida más fácil ya que selecciona automáticamente el correcto.</p>
+                <p>Y la última es Usando <code>&lt;&lt;&lt;</code>. Recuerda dejar <code>END;</code> al principio de la línea.</p>
+                <div class="code-block">
+                    <pre><code>&lt;html&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Mi primer fichero en PHP&lt;/h1&gt;
+        &lt;?php
+        echo &lt;&lt;&lt;END
+            En un lugar de la mancha,
+            de cuyo nombre no quiero acordarme...
+END;
+        ?&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+
+                <h2>Concadenar</h2>
+                <p>Debes utilizar un punto entre ambos textos. Los espacios son opcionales, pero te ayudará a visualizar con más facilidad.</p>
+                <div class="code-block">
+                    <pre><code>&lt;html&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Dos Beatles&lt;/h1&gt;
+        &lt;?php
+            echo 'John Lennon' . ' y ' . 'Paul McCartney';
+        ?&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+
+                <h2>Comentarios</h2>
+                <p>Existe dos tipos de comentarios: línea y multilínea.</p>
+                <div class="code-block">
+                    <pre><code>// Esto es un comentario de una sola línea
+echo 'Esto es una prueba';
+/* Esto es un comentario multilínea
+    y otra lína de comentarios */
+echo 'Esto es otra prueba';
+echo 'Una prueba final';
+# Esto es un comentario al estilo de consola de una sola línea</code></pre>
+                </div>
+                <p>Los de una línea empiezan con <code>//</code> o <code>#</code>, seguido de un espacio. Mientras que los multilinea empiezan con <code>/*</code> y terminan con <code>*/</code>.</p>
+                <p>Si quieres dejar secciones bien delimitadas y ordenadas J. Prettyman te propone la siguiente estructura.</p>
+                <div class="code-block">
+                    <pre><code>//======================================================================
+// CATEGORIA EN MAYUSCULA
+//======================================================================
+
+//-----------------------------------------------------
+// Sub-Categoria En Minúscula
+//-----------------------------------------------------
+
+/* Título con Letras Capital */
+
+# Opción 1
+# Opción 2
+# Opción 3
+
+/*
+* Larga explicación de alguna
+* funcionalidad o bloque de código
+* que lo merezca.
+*/
+
+// Anotación</code></pre>
+                </div>
+                <div class="activities-section">
+                    <h2 class="activities-title">Prácticas del Módulo</h2>
+                    
+                    <details class="activity-card">
+                        <summary>Ejercicio 1: Calculadora Sencilla</summary>
+                        <div class="activity-content">
+                            <p>Realiza una sencilla calculadora siguiendo estos pasos:</p>
+                            <ul>
+                                <li>Pon en una variable un número.</li>
+                                <li>Pon en otra variable un número.</li>
+                                <li>Suma y muestra el resultado por pantalla.</li>
+                            </ul>
+                            <p><strong>Nivel Pro:</strong> Realiza otras operaciones matemáticas como restar, multiplicar o dividir.</p>
+                        </div>
+                    </details>
+
+                    <details class="activity-card">
+                        <summary>Ejercicio 2: Calculadora Sencilla</summary>
+                        <div class="activity-content">
+                            <p>Realiza una sencilla calculadora siguiendo estos pasos:</p>
+                            <ul>
+                                <li>Pon en una variable un número.</li>
+                                <li>Pon en otra variable un número.</li>
+                                <li>Suma y muestra el resultado por pantalla.</li>
+                            </ul>
+                            <p><strong>Nivel Pro:</strong> Realiza otras operaciones matemáticas como restar, multiplicar o dividir.</p>
+                        </div>
+                    </details>
+
+                    <details class="activity-card">
+                        <summary>Ejercicio 3: Calculadora de IVA</summary>
+                        <div class="activity-content">
+                            <p>Desarrolla un script que realice el cálculo de impuestos siguiendo estas pautas:</p>
+                            <ul>
+                                <li>Guarda un número (el precio base) en una variable.</li>
+                                <li>Calcula el IVA de esa cifra. (Pista: debes multiplicar por 1.21).</li>
+                                <li>Muestra por pantalla el precio final con el IVA ya añadido.</li>
+                            </ul>
+                            <p><strong>Nivel Pro:</strong> Muestra además la cifra original sin IVA y usa tu creatividad para que el resultado final se vea atractivo en el navegador.</p>
+                        </div>
+                    </details>
+                </div>
+            </article>
+
+            <nav class="lesson-footer-nav">
+                <div></div>
+                <a href="../02-variables/index.html" class="nav-card next">
+                    <span>Siguiente Módulo</span>
+                    <h4>Variables</h4>
+                </a>
+            </nav>
+        </main>
+
+        <div id="sidebar-placeholder"></div>
+    </div>
+
+    <script src="../../js/components.js"></script>
+</body>
+</html>
